@@ -1,0 +1,12 @@
+.pageNotFound {
+  background-color: var(--color-dark--0);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pageNotFound h1 {
+  font-size: 5rem;
+}
