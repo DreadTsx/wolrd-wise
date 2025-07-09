@@ -32,3 +32,51 @@
 .pricing section a {
   margin-top: 2rem;
 }
+
+/* Tablet */
+@media (max-width: 768px) {
+  .pricing {
+    margin: 1.5rem;
+    padding: 2rem 3rem;
+  }
+
+  .pricing section {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    margin: 4rem auto;
+    width: 90%;
+  }
+
+  .pricing h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .pricing p {
+    font-size: 1.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .pricing {
+    margin: 1rem;
+    padding: 1.5rem 2rem;
+  }
+
+  .pricing section {
+    gap: 2rem;
+    margin: 2rem auto;
+    width: 100%;
+  }
+
+  .pricing h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing p {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+}

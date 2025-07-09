@@ -47,7 +47,7 @@ function Map() {
       )}
       <MapContainer
         center={mapPosition}
-        zoom={8}
+        zoom={10}
         scrollWheelZoom={true}
         className={styles.map}
       >
@@ -66,6 +66,12 @@ function Map() {
             </Popup>
           </Marker>
         ))}
+
+        {geolocationPosition && (
+          <Marker position={[geolocationPosition.lat, geolocationPosition.lng]}>
+            <Popup>Your Location</Popup>
+          </Marker>
+        )}
 
         <ChangeLocation position={mapPosition} />
         <DetectClick />

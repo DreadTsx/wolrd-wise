@@ -26,3 +26,17 @@
 .nav a:global(.active) {
   background-color: var(--color-dark--0);
 }
+
+/* Mobile */
+@media (max-width: 480px) {
+  .nav {
+    margin-top: 4.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .nav a:link,
+  .nav a:visited {
+    font-size: 1rem;
+    padding: 0.4rem 1.5rem;
+  }
+}

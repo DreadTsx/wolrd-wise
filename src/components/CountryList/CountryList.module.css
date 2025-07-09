@@ -10,3 +10,20 @@
   align-content: start;
   gap: 1.6rem;
 }
+
+/* Tablet and below */
+@media (max-width: 768px) {
+  .countryList {
+    height: 50vh;
+    gap: 1.2rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .countryList {
+    height: 40vh;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

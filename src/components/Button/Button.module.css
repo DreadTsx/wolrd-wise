@@ -44,3 +44,16 @@
   color: var(--color-dark--1);
   box-shadow: 0 0.4rem 1.2rem rgba(36, 42, 46, 0.16);
 }
+
+/* Mobile */
+@media (max-width: 480px) {
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 1.3rem;
+  }
+
+  .position {
+    bottom: 2rem;
+    font-size: 1.2rem;
+  }
+}

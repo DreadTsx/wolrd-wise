@@ -5,3 +5,20 @@
   display: flex;
   position: relative;
 }
+
+/* Tablet and below */
+@media (max-width: 768px) {
+  .app {
+    padding: 1rem;
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .app {
+    padding: 0.5rem;
+  }
+}

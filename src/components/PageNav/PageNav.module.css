@@ -32,3 +32,44 @@ a.ctaLink:visited {
   padding: 0.8rem 2rem;
   border-radius: 7px;
 }
+
+/* Tablet */
+@media (max-width: 768px) {
+  .nav ul {
+    gap: 2rem;
+  }
+
+  .nav a:link,
+  .nav a:visited {
+    font-size: 1.3rem;
+  }
+
+  a.ctaLink:link,
+  a.ctaLink:visited {
+    padding: 0.6rem 1.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .nav {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .nav ul {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav a:link,
+  .nav a:visited {
+    font-size: 1.2rem;
+  }
+
+  a.ctaLink:link,
+  a.ctaLink:visited {
+    padding: 0.5rem 1.2rem;
+  }
+}
