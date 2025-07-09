@@ -13,7 +13,7 @@ function Login() {
   //? Use effect that runs when isAuthenticated is true then navigate theuser to "/app"
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/app", { relative: true });
+      navigate("/app", { replace: true });
     }
   }, [isAuthenticated, navigate]);
 

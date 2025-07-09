@@ -13,6 +13,7 @@ import { useGeolocation } from "../../hooks/useGeolocation";
 import { useUrlPosition } from "../../hooks/useUrlPosition";
 import Button from "../Button/Button";
 import styles from "./Map.module.css";
+import "leaflet/dist/leaflet.css";
 
 function Map() {
   const { cities } = useCities();
