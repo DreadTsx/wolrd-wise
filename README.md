@@ -82,7 +82,3 @@ Once both the JSON server and the development server are running, open your web 
 | **Vite**             | A fast build tool that provides a lightning-fast development experience. | [Vite Official Site](https://vitejs.dev/)              |
 | **ESLint**           | Pluggable JavaScript linter.                                             | [ESLint Official Site](https://eslint.org/)            |
 | **JSON Server**      | A full fake REST API in less than a minute.                              | [JSON Server](https://github.com/typicode/json-server) |
-
-```
-
-```
