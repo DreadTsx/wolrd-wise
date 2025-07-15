@@ -1,4 +1,10 @@
-import { createContext, useEffect, useContext, useReducer } from "react";
+import {
+  createContext,
+  useEffect,
+  useContext,
+  useReducer,
+  useCallback,
+} from "react";
 //
 const BASE_URL = "http://localhost:9000";
 //
@@ -79,19 +85,24 @@ function CitiesProvider({ children }) {
   }, []);
 
   //? Function for getting the current selected city Info
-  const getCity = async (id) => {
-    dispatch({ type: "loading" });
-    try {
-      const response = await fetch(`${BASE_URL}/cities/${id}`);
-      const data = await response.json();
-      dispatch({ type: "city/loaded", payload: data });
-    } catch {
-      dispatch({
-        type: "rejected",
-        payload: "There was an error loading the city data ❌...",
-      });
-    }
-  };
+
+  const getCity = useCallback(
+    async (id) => {
+      if (Number(id) === currentCity.id) return;
+      dispatch({ type: "loading" });
+      try {
+        const response = await fetch(`${BASE_URL}/cities/${id}`);
+        const data = await response.json();
+        dispatch({ type: "city/loaded", payload: data });
+      } catch {
+        dispatch({
+          type: "rejected",
+          payload: "There was an error loading the city data ❌...",
+        });
+      }
+    },
+    [currentCity.id]
+  );
 
   //? Async function to ADD a new city to the array and update the fake API
   const createCity = async (newCity) => {
