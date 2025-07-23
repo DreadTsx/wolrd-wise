@@ -92,7 +92,7 @@ function CitiesProvider({ children }) {
       if (Number(id) === currentCity.id) return;
       dispatch({ type: "loading" });
       try {
-        const response = await fetch(`${BASE_URL}/cities/${id}`);
+        const response = await fetch(`${BASE_URL}/cities/:${id}`);
         const data = await response.json();
         dispatch({ type: "city/loaded", payload: data });
       } catch {
