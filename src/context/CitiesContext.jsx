@@ -6,7 +6,8 @@ import {
   useCallback,
 } from "react";
 //
-const BASE_URL = "http://localhost:9000";
+// const BASE_URL = "http://localhost:9000";
+const BASE_URL = "https://dread-cities-api.vercel.app/api";
 //
 const CitiesContext = createContext();
 //
@@ -129,7 +130,7 @@ function CitiesProvider({ children }) {
   const deleteCity = async (id) => {
     dispatch({ type: "loading" });
     try {
-      await fetch(`${BASE_URL}/cities/${id}`, {
+      await fetch(`${BASE_URL}/cities/:${id}`, {
         method: "DELETE",
       });
 
