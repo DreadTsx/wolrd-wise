@@ -25,16 +25,7 @@ npm install
 yarn install
 ```
 
-### 3. 💾 Start the JSON Server
-
-This project uses `json-server` to simulate a backend API for managing city data. You'll need to run it in a separate terminal:
-
-```bash
-npm run server
-# The server will run on http://localhost:9000
-```
-
-### 4. 🌐 Start the Development Server
+### 3. 🌐 Start the Development Server
 
 Finally, launch the React development server:
 
@@ -68,7 +59,7 @@ Once both the JSON server and the development server are running, open your web 
 - 🎣 **Custom React Hooks**: Leverages `useGeolocation` for precise location tracking and `useUrlPosition` for managing map coordinates via URL parameters, demonstrating reusable logic.
 - ⚛️ **Context API for State Management**: Efficiently manages global application state for cities data and authentication status, ensuring a clean and scalable architecture.
 - ⚡ **Lazy Loading**: Improves initial load times by dynamically importing page components using `React.lazy()` and `Suspense`.
-- 🔌 **Mock Backend**: Utilizes `json-server` for a lightweight, local API to persist city data, simulating real-world data interactions.
+- 💾 **Local Storage**: Utilizes browser's localStorage for persistent city data storage, providing offline functionality and eliminating the need for external APIs.
 
 ## 🛠️ Technologies Used
 
@@ -81,4 +72,3 @@ Once both the JSON server and the development server are running, open your web 
 | **React Datepicker** | A flexible date picker component for React.                              | [React Datepicker](https://reactdatepicker.com/)       |
 | **Vite**             | A fast build tool that provides a lightning-fast development experience. | [Vite Official Site](https://vitejs.dev/)              |
 | **ESLint**           | Pluggable JavaScript linter.                                             | [ESLint Official Site](https://eslint.org/)            |
-| **JSON Server**      | A full fake REST API in less than a minute.                              | [JSON Server](https://github.com/typicode/json-server) |
