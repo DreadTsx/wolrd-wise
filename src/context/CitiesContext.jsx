@@ -5,12 +5,9 @@ import {
   useReducer,
   useCallback,
 } from "react";
-//
-// const BASE_URL = "http://localhost:9000";
-const BASE_URL = "https://dread-cities-api.vercel.app/api";
-//
+
 const CitiesContext = createContext();
-//
+
 const initialState = {
   cities: [],
   isLoading: false,
@@ -61,40 +58,38 @@ function reducer(state, action) {
       throw new Error("Unknown Action");
   }
 }
+
 function CitiesProvider({ children }) {
   const [{ cities, currentCity, isLoading }, dispatch] = useReducer(
     reducer,
     initialState
   );
 
-  //? useEffect for fetching the cities from the fakeAPI
+  // Load cities from localStorage on mount
   useEffect(() => {
-    const fetchCities = async () => {
-      dispatch({ type: "loading" });
-      try {
-        const response = await fetch(`${BASE_URL}/cities`);
-        const data = await response.json();
-        dispatch({ type: "cities/loaded", payload: data });
-      } catch {
-        dispatch({
-          type: "rejected",
-          payload: "There was an error loading the data ❌...",
-        });
-      }
-    };
-    fetchCities();
+    dispatch({ type: "loading" });
+    try {
+      const stored = localStorage.getItem("cities");
+      const data = stored ? JSON.parse(stored) : [];
+      dispatch({ type: "cities/loaded", payload: data });
+    } catch {
+      dispatch({
+        type: "rejected",
+        payload: "There was an error loading the data ❌...",
+      });
+    }
   }, []);
 
-  //? Function for getting the current selected city Info
-
+  // Get city by id from localStorage
   const getCity = useCallback(
     async (id) => {
       if (Number(id) === currentCity.id) return;
       dispatch({ type: "loading" });
       try {
-        const response = await fetch(`${BASE_URL}/cities/${id}`);
-        const data = await response.json();
-        dispatch({ type: "city/loaded", payload: data });
+        const stored = localStorage.getItem("cities");
+        const data = stored ? JSON.parse(stored) : [];
+        const city = data.find((c) => c.id === Number(id));
+        dispatch({ type: "city/loaded", payload: city || {} });
       } catch {
         dispatch({
           type: "rejected",
@@ -105,19 +100,18 @@ function CitiesProvider({ children }) {
     [currentCity.id]
   );
 
-  //? Async function to ADD a new city to the array and update the fake API
+  // Add a new city to localStorage
   const createCity = async (newCity) => {
     dispatch({ type: "loading" });
     try {
-      const response = await fetch(`${BASE_URL}/cities`, {
-        method: "POST",
-        body: JSON.stringify(newCity),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-      dispatch({ type: "city/created", payload: data });
+      const stored = localStorage.getItem("cities");
+      const data = stored ? JSON.parse(stored) : [];
+      // Assign a unique id if not present
+      const id = newCity.id || Date.now();
+      const city = { ...newCity, id };
+      const updated = [...data, city];
+      localStorage.setItem("cities", JSON.stringify(updated));
+      dispatch({ type: "city/created", payload: city });
     } catch {
       dispatch({
         type: "rejected",
@@ -126,14 +120,14 @@ function CitiesProvider({ children }) {
     }
   };
 
-  //? Async function to DELETE city from the array and update the fake API
+  // Delete city from localStorage
   const deleteCity = async (id) => {
     dispatch({ type: "loading" });
     try {
-      await fetch(`${BASE_URL}/cities/${id}`, {
-        method: "DELETE",
-      });
-
+      const stored = localStorage.getItem("cities");
+      const data = stored ? JSON.parse(stored) : [];
+      const updated = data.filter((city) => city.id !== id);
+      localStorage.setItem("cities", JSON.stringify(updated));
       dispatch({ type: "city/deleted", payload: id });
     } catch {
       dispatch({
