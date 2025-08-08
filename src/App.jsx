@@ -16,12 +16,6 @@ const ProductPage = lazy(() => import("./pages/ProductPage/ProductPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
 const AppLayout = lazy(() => import("./pages/AppLayout/AppLayout"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound/PageNotFound"));
-// import HomePage from "./pages/HomePage/HomePage";
-// import PricingPage from "./pages/PricingPage/PricingPage";
-// import ProductPage from "./pages/ProductPage/ProductPage";
-// import LoginPage from "./pages/LoginPage/LoginPage";
-// import AppLayout from "./pages/AppLayout/AppLayout";
-// import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 function App() {
   return (
